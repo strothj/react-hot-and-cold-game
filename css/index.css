@@ -33,6 +33,30 @@ a {
     border-radius: 4px;
 }
 
+.game__card {
+    margin: 0 auto;
+    width: 380px;
+    height: 380px;
+}
+
+.game-card {
+    background-color: #394264;
+    -webkit-box-shadow: 25px 25px 70px -30px rgba(0,0,0,0.75);
+    -moz-box-shadow: 25px 25px 70px -30px rgba(0,0,0,0.75);
+    box-shadow: 25px 25px 70px -30px rgba(0,0,0,0.75);
+    border-radius: 4px;
+}
+
+.feedback h2 {
+    display: block;
+    background-color: #cc324b;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    font-size: 1.5em;
+    font-weight: 400;
+    line-height: 3em;
+}
+
 .navbar ul {
     display: flex;
     list-style-type: none;
