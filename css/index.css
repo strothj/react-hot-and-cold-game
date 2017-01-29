@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-body, ul {
+body, ul, h2 {
     margin: 0;
 }
 
@@ -55,6 +55,36 @@ a {
     font-size: 1.5em;
     font-weight: 400;
     line-height: 3em;
+}
+
+.guess-input input {
+    width: 300px;
+    height: 50px;
+    margin: 0.8em auto 0;
+    padding: 0.2em;
+    text-align: center;
+    font-size: 2em;
+}
+
+.guess-input__input {
+    background: #50597b;
+    color: #fff;
+    border: solid 1px #1f253d;
+    border-radius: 4px;
+}
+
+.guess-input__submit {
+    border: solid 1px #1f253d;
+    border-radius: 4px;
+    background: #1f253d;
+    color: #95a5a6;
+    transition: background 1s ease-in-out;
+}
+
+.guess-input__submit:hover {
+    background: #e64c65;
+    color: #fff;
+    transition: background 1s ease-in-out;
 }
 
 .navbar ul {
