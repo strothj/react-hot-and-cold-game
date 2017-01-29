@@ -1,12 +1,7 @@
 var React = require('react');
+var connect = require('react-redux').connect;
 
 var Feedback = React.createClass({
-    getDefaultProps: function() {
-        return {
-            feedback: 'Make your guess!'
-        };
-    },
-
     render: function() {
         return (
             <div className="feedback">
@@ -16,4 +11,10 @@ var Feedback = React.createClass({
     }
 });
 
-module.exports = Feedback;
+var mapStateToProps = function(state, props) {
+    return {
+        feedback: state.guessMessage
+    };
+};
+
+module.exports = connect(mapStateToProps)(Feedback);
