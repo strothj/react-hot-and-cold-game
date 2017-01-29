@@ -60,6 +60,8 @@ var gameReducer = function(state, action) {
             secretNumber: generateRandomNumber()
         });
     }
+
+    return state;
 };
 
 module.exports.gameReducer = gameReducer;

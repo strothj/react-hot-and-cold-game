@@ -2,6 +2,7 @@ var React = require('react');
 
 var Feedback = require('./feedback');
 var GuessInput = require('./guess-input');
+var GuessCounter = require('./guess-counter');
 
 var GameCard = React.createClass({
     render: function() {
@@ -12,6 +13,7 @@ var GameCard = React.createClass({
             <section className={className}>
                 <Feedback />
                 <GuessInput />
+                <GuessCounter />
             </section>
         );
     }
