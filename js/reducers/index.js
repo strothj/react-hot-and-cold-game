@@ -1,7 +1,9 @@
 var actions = require('../actions/index');
 
 var generateRandomNumber = function() {
-    return Math.floor(Math.random() * 100) + 1;
+    var randNum = Math.floor(Math.random() * 100) + 1;
+    console.log('Random number: ', randNum);
+    return randNum;
 };
 
 var ERR_NOT_NUMBER = 'Please enter a whole number';
@@ -30,7 +32,9 @@ var initialGameState = {
     secretNumber: generateRandomNumber(),
     guessMessage: GUESS_MESSAGES.NEW_GAME,
     alertMessage: null,
-    previousGuesses: []
+    previousGuesses: [],
+    fewestGuesses: 0,
+    gameWon: false
 };
 
 var gameReducer = function(state, action) {
@@ -47,9 +51,12 @@ var gameReducer = function(state, action) {
 
         if (err) return Object.assign({}, state, { alertMessage: err });
 
+        var guessMessage = calculateGameMessage(state.secretNumber, guess);
+
         return Object.assign({}, state, {
             previousGuesses: state.previousGuesses.concat(guess),
-            guessMessage: calculateGameMessage(state.secretNumber, guess)
+            guessMessage: guessMessage,
+            gameWon: (guessMessage === GUESS_MESSAGES.WON)
         });
     }
     else if (action.type === actions.DISMISS_ALERT) {
@@ -58,6 +65,16 @@ var gameReducer = function(state, action) {
     else if (action.type === actions.START_NEW_GAME) {
         return Object.assign({}, initialGameState, {
             secretNumber: generateRandomNumber()
+        });
+    }
+    else if (action.type === actions.FETCH_FEWEST_GUESSES_SUCCESS) {
+        return Object.assign({}, state, {
+            fewestGuesses: action.fewestGuesses
+        });
+    }
+    else if (action.type === actions.FETCH_FEWEST_GUESSES_ERROR) {
+        return Object.assign({}, state, {
+            fewestGuesses: 'N/A'
         });
     }
 
